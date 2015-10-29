@@ -2,7 +2,7 @@
 <div class="container-fluid">
     <div class="margin-10 row">
         <div class="col-sm-12 col-md-12">
-            <div class="titulo2"> Puntaje\(\int\) &nbsp;&nbsp; Ma\(\int\) &nbsp;&nbsp; Alto\(\int\)</div>
+            <div class="titulo2"> Puntaje\(\int\) &nbsp;&nbsp; M&aacute;\(\int\) &nbsp;&nbsp; Alto\(\int\)</div>
             </div>
         </div>
     </div>

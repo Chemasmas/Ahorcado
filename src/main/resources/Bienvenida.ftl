@@ -1,4 +1,5 @@
-<#i|backgroundPrincipal alto">
+<#include "/Encabezado.ftl">
+<div class="container-fluid backgroundPrincipal alto">
     <div class="margin-10 row">
         <div class="col-sm-12 col-md-12">
             <div class="titulo">\(\int\)Ahorcado</div>
