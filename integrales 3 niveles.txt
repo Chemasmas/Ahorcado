@@ -1,50 +1,29 @@
-NIVEL 1
-
-MÉTODO DIRECTO
-integral c dx
-integral xdx
-integral x**2 dx
-
-CAMBIO DE VARIABLE
-integral (x+3)**10 dx
-Integral (2x+3)**3 dx
-integral (30x -8) **30 dx
-
-INTEGRACION POR PARTES
-integral sen**2 x dx
-integral ln x dx
-integral x cos (5x) dx
-
-NIVEL 2
-
-MÉTODO DIRECTO
-integral 2x**3+6 dx
-integral x(x**2-x**3) dx
-integral ((x**-3)+(x**(1/2))+8) dx
-
-CAMBIO DE VARIABLE
-integral x (2 + (x**2)) dx
-integral x**4 ( 10**5 - 20) dx
-integral x **2 sqrt(x**3 + 1) dx
-
-INTEGRACION POR PARTES
-integral t sec **2  (2t) dt
-integral ln**2 x dx
-integration (x(e**(2x)))/(1+2x)**2) dx
-
-NIVEL 3
-
-MÉTODO DIRECTO
-integration ((2x**3)+(3x**(-3))-(4**(1/2))) dx
-integral ((x**8)+(6x**7)-(5x**6)+(4x**5)) dx
-integral ((x**5)+(x**6))**2 dx
-
-CAMBIO DE VARIABLE
-integral dx/(1-8x)**4 dx
-integral (cos **3 theta) (sen theta) dx
-integral x sen (x**2) dx
-
-INTEGRACION POR PARTES
-integration arc tan (4x) dx
-integration ln x/x**(1/2) dx
-integration secx dx
+[
+{problema:"integrate 9 dx",nivel:"facil",tipo:"directo"},
+{problema:"integrate x dx",nivel:"facil",tipo:"directo"},
+{problema:"integrate x**2 dx",nivel:"facil",tipo:"directo"},
+{problema:"integrate (x+3)**10 dx",nivel:"facil",tipo:"cambio"},
+{problema:"integrate (2x+3)**3 dx",nivel:"facil",tipo:"cambio"},
+{problema:"integrate (30x -8) **30 dx",nivel:"facil",tipo:"cambio"},
+{problema:"integrate sen**2 x dx",nivel:"facil",tipo:"partes"},
+{problema:"integrate ln x dx",nivel:"facil",tipo:"partes"},
+{problema:"integrate x cos (5x) dx",nivel:"facil",tipo:"partes"},
+{problema:"integrate 2x**3+6 dx",nivel:"medio",tipo:"directo"},
+{problema:"integrate x(x**2-x**3) dx",nivel:"medio",tipo:"directo"},
+{problema:"integrate ((x**-3)+(x**(1/2))+8) dx",nivel:"medio",tipo:"directo"},
+{problema:"integrate x (2 + (x**2)) dx",nivel:"medio",tipo:"cambio"},
+{problema:"integrate x**4 ( 10**5 - 20) dx",nivel:"medio",tipo:"cambio"},
+{problema:"integrate x **2 sqrt(x**3 + 1) dx",nivel:"medio",tipo:"cambio"},
+{problema:"integrate t sec **2  (2t) dt",nivel:"medio",tipo:"partes"},
+{problema:"integrate ln**2 x dx",nivel:"medio",tipo:"partes"},
+{problema:"integrate (x(e**(2x)))/(1+2x)**2) dx",nivel:"medio",tipo:"partes"},
+{problema:"integrate ((2x**3)+(3x**(-3))-(4**(1/2))) dx",nivel:"dificil",tipo:"directo"},
+{problema:"integrate ((x**8)+(6x**7)-(5x**6)+(4x**5)) dx",nivel:"dificil",tipo:"directo"},
+{problema:"integrate ((x**5)+(x**6))**2 dx",nivel:"dificil",tipo:"directo"},
+{problema:"integrate x/(1-8x)**4 dx",nivel:"dificil",tipo:"cambio"},
+{problema:"integrate (cos **3 theta) (sen theta) dx",nivel:"dificil",tipo:"cambio"},
+{problema:"integrate x sen (x**2) dx",nivel:"dificil",tipo:"cambio"},
+{problema:"integrate arc tan (4x) dx",nivel:"dificil",tipo:"partes"},
+{problema:"integrate ln x/x**(1/2) dx",nivel:"dificil",tipo:"partes"},
+{problema:"integrate secx dx",nivel:"dificil",tipo:"partes"}
+]

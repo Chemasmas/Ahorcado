@@ -1,5 +1,6 @@
 package com.chemasmas.ahorcado;
 
+import com.chemasmas.ahorcado.entidades.Problemas;
 import com.chemasmas.ahorcado.entidades.Score;
 import freemarker.template.Configuration;
 import java.io.File;
@@ -11,6 +12,7 @@ import spark.ModelAndView;
 import spark.Spark;
 import spark.template.freemarker.FreeMarkerEngine;
 
+import static com.chemasmas.ahorcado.AhorcadoDB.*;
 import static spark.Spark.*;
 
 
@@ -51,9 +53,7 @@ public class Ahorcado {
         get("/score",(req,res)->{
             HashMap<String,Object> modelo=new HashMap<>();
             modelo.put("Titulo","Ahorcado");
-            AhorcadoDB db=new AhorcadoDB();
-            ArrayList<Score> scores=db.getTopScore();
-            modelo.put("scores",scores);
+            modelo.put("scores",getTopScore());
             return new ModelAndView(modelo,"score.ftl");
         },engine);
 
@@ -66,12 +66,11 @@ public class Ahorcado {
 
         //Seleccion de Nivel
         get("/juego", (req, res) -> {
-            //System.out.println((String)req.attribute("nivel"));
-            //System.out.println(req.params("nivel"));
             //Aqui seteare una variable de sesion , y rediccionare a los problemas
             if (req.queryParams("nivel") != null) {
                 req.session(true);
                 req.session().attribute("nivel", req.queryParams("nivel"));/**/
+                req.session().attribute("intentos",4); //Revisar contra el js
                 res.redirect("/problemas");
             } else {
                 res.redirect("/");
@@ -79,37 +78,41 @@ public class Ahorcado {
             return "";
         });
 
-        get("/problema/:problema",(req,res)->{
-            if(req.queryParams("problema")!=null)
+        get("/problemas",(req,res)->{
+            Problemas p=null;
+            HashMap<String,Object> modelo=new HashMap<>();
+            modelo.put("Titulo","Ahorcado");
+            if(req.session().attribute("nivel")==null)
             {
-                //no han deinido problema
-
+                //No hay nivel
+                res.redirect("/");
             }
-            //System.out.println((String)req.attribute("nivel"));
-            //System.out.println(req.params("nivel"));
-            return req.params(":problema");
+            else
+            {
+                p= getProblemas(req.session().attribute("nivel"));
+                req.session().attribute("problemas",p);
+            }
+            return new ModelAndView(modelo,"problemas.ftl");
         });
+
+        //Solo habra 6 problemas
         //Problema
         get("/problema/:problema",(req,res)->{
             if(req.queryParams("problema")!=null)
             {
-                //no han deinido problema
-
+                return null;
             }
-            //System.out.println((String)req.attribute("nivel"));
-            //System.out.println(req.params("nivel"));
+            //Debe retornar la vista
             return req.params(":problema");
         });
 
         //Revision de Problema
-        post("/problema/:problema", (req, res) -> {
-            //System.out.println((String)req.attribute("nivel"));
-            //System.out.println(req.params("nivel"));
-            //recibire el resultado , procesare, asiganre puntaje y rediccionare al siguiente problema
+        post("/problema/:problema/validar", (req, res) -> {
+            //recibire el resultado , procesare, asiganre puntaje retornare estado o redireccion
             return req.params(":problema");
         });
 
-        get("/final/:sesion",(req,res)->{
+        get("/final",(req,res)->{
             //System.out.println((String)req.attribute("nivel"));
             //System.out.println(req.params("nivel"));
             //Termino la sesion, y despliego el resultado

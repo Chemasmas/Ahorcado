@@ -1,5 +1,7 @@
 package com.chemasmas.ahorcado;
 
+import com.chemasmas.ahorcado.entidades.Problema;
+import com.chemasmas.ahorcado.entidades.Problemas;
 import com.chemasmas.ahorcado.entidades.Score;
 import com.mongodb.MongoClient;
 import com.mongodb.client.MongoDatabase;
@@ -8,13 +10,15 @@ import com.mongodb.Block;
 import com.mongodb.client.FindIterable;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Random;
 
 public class AhorcadoDB {
-    MongoClient cliente=new MongoClient();
-    MongoDatabase db=cliente.getDatabase("ahorcado");
+    static MongoClient cliente=new MongoClient();
+    static MongoDatabase db=cliente.getDatabase("ahorcado");
 
 
-    public ArrayList<Score> getTopScore()
+    public static  ArrayList<Score> getTopScore()
     {
         ArrayList<Score> scoresAL=new ArrayList<>();
 
@@ -33,5 +37,54 @@ public class AhorcadoDB {
             }
         });
         return scoresAL;
+    }
+
+    public static Problemas getProblemas(String nivel) {
+        Problemas res=new Problemas();
+        Random rnd=new Random(System.currentTimeMillis());
+
+        FindIterable<Document> directos=db.getCollection("problemas").find(new Document("nivel",nivel).append("tipo","directo"));
+        ArrayList<Problema> directosAL=new ArrayList<>();
+        directos.forEach(new Block<Document>() {
+            @Override
+            public void apply(Document document) {
+                Problema curr=new Problema();
+                curr.setProblema(document.getString("problema"));
+                directosAL.add(curr);
+            }
+        });
+        Collections.shuffle(directosAL,rnd);
+        //problemasAL.addAll(directosAL.subList(1, 3));
+        res.getProblemas().addAll(directosAL.subList(1, 3));
+
+        FindIterable<Document> cambio=db.getCollection("problemas").find(new Document("nivel",nivel).append("tipo","cambio"));
+        ArrayList<Problema> cambioAL=new ArrayList<>();
+        cambio.forEach(new Block<Document>() {
+            @Override
+            public void apply(Document document) {
+                Problema curr=new Problema();
+                curr.setProblema(document.getString("problema"));
+                cambioAL.add(curr);
+            }
+        });
+        Collections.shuffle(cambioAL,rnd);
+        //problemasAL.addAll(cambioAL.subList(1,3));
+        res.getProblemas().addAll(cambioAL.subList(1, 3));
+
+        FindIterable<Document> partes=db.getCollection("problemas").find(new Document("nivel",nivel).append("tipo","partes"));
+        ArrayList<Problema> partesAL=new ArrayList<>();
+        partes.forEach(new Block<Document>() {
+            @Override
+            public void apply(Document document) {
+                Problema curr=new Problema();
+                curr.setProblema(document.getString("problema"));
+                partesAL.add(curr);
+            }
+        });
+        Collections.shuffle(partesAL,rnd);
+        //problemasAL.addAll(partesAL.subList(1,3));
+        res.getProblemas().addAll(partesAL.subList(1, 3));
+
+        return res;
     }
 }
