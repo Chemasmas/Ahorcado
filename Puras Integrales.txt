@@ -1,0 +1,43 @@
+\int c dx
+\int x dx
+\int x^{2} dx
+
+
+\int {2x^{3}}+6 dx
+\int x({x^{2}}-{x^{3}}) dx
+\int(x^{-3}+x^{1/2}+8)dx
+
+
+\int 2x^{3}+3x^{-3}-4x^{1/2}dx
+\int x^{8}+6x^{7}-5x^{6}+4x^{5}dx
+\int (x^{5}+x^{6})^{2}dx
+
+
+\int (x +3)^{10} dx
+\int (2x +3)^{3} dx
+\int (30x - 8)^{30} dx
+
+
+\int (2 + x^{2}) dx
+\int x^{4}(10^{5}- 20) dx
+\int x^{2} \sqrt{x^{3} +1}dx
+
+
+\int \frac{dx}{(1-8x)^4}dx
+\int cos^{3} \theta sen \theta d\theta dx
+\int x sen(x^{2})dx
+
+
+\int sen^{2} x dx\\ 
+\int ln x dx\\ 
+\int x cos (5x)dx\\ 
+
+	
+\int t sec^{2t}dt\\ 
+\int ln^{2} x dx\\ 
+\int \frac{x e^2x}{(1+2x)}dx\\ 
+	
+	
+\int arctan (4t) dt\\ 
+\int \frac{ln y}{\sqrt{y}}dy\\ 
+\int sec x dx\\ 
