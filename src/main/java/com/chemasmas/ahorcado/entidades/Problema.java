@@ -1,6 +1,11 @@
 package com.chemasmas.ahorcado.entidades;
 
 public class Problema {
+
+    public Problema() {
+        estatus=false;
+    }
+
     public String getProblema() {
         return problema;
     }
@@ -9,6 +14,14 @@ public class Problema {
         this.problema = problema;
     }
 
-    String problema;
+    public boolean isEstatus() {
+        return estatus;
+    }
 
+    public void setEstatus(boolean estatus) {
+        this.estatus = estatus;
+    }
+
+    boolean estatus;
+    String problema;
 }

@@ -7,8 +7,14 @@ import org.apache.http.client.utils.URIBuilder;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
+import javax.xml.parsers.*;
+import org.xml.sax.InputSource;
+import org.w3c.dom.*;
+import org.xml.sax.SAXException;
 
+import java.io.*;
 import java.io.IOException;
+import java.io.StringReader;
 import java.net.URI;
 import java.net.URISyntaxException;
 
@@ -18,7 +24,7 @@ public class AhorcadoWolfram {
     final static String APPID="HH7R5A-XW766K5L8T";
     final static String IMAGENTEXTO="image,plaintext";
 
-    static String getDerivada(String input) throws URISyntaxException, IOException {
+    static String[] getDerivada(String input) throws URISyntaxException, IOException, ParserConfigurationException, SAXException {
         input="derivate "+input;
         URI derivada = new URIBuilder().setScheme("http")
                 .setHost("api.wolframalpha.com")
@@ -32,13 +38,32 @@ public class AhorcadoWolfram {
         CloseableHttpResponse response = cliente.execute(httpGet);
 
         HttpEntity entidad = response.getEntity();
+
         if(entidad!=null){
-            long len=entidad.getContentLength();
-            System.out.println(EntityUtils.toString(entidad));
+            return processXML(EntityUtils.toString(entidad));
         }
-        return "";
+        return null;
     }
 
+    private static String[] processXML(String xml) throws ParserConfigurationException, IOException, SAXException {
+        String[] res=new String[2];
+        DocumentBuilderFactory dbf =
+                DocumentBuilderFactory.newInstance();
+        DocumentBuilder db = dbf.newDocumentBuilder();
+        InputSource is = new InputSource();
+        is.setCharacterStream(new StringReader(xml));
+        Document doc = db.parse(is);
+        NodeList texto=doc.getElementsByTagName("plaintext");
+        String ecu=texto.item(0).getTextContent().trim();
+        res[0]=ecu;
+        System.out.println(ecu);
+        NodeList imagenes=doc.getElementsByTagName("img");
+        Node imagen=imagenes.item(0);
+        res[1]= String.valueOf(imagen.getAttributes().getNamedItem("src"));
+        System.out.println(res[1]);
+
+        return res;
+    }
     public static void main(String []args)
     {
         try {
@@ -47,6 +72,20 @@ public class AhorcadoWolfram {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
+        } catch (ParserConfigurationException e) {
+            e.printStackTrace();
+        } catch (SAXException e) {
+            e.printStackTrace();
         }
     }
+
+    public static String getCharacterDataFromElement(Element e) {
+        Node child = e.getFirstChild();
+        if (child instanceof CharacterData) {
+            CharacterData cd = (CharacterData) child;
+            return cd.getData();
+        }
+        return "?";
+    }
+
 }

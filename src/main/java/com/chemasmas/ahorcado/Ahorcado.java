@@ -11,6 +11,7 @@ import spark.ModelAndView;
 
 import spark.Spark;
 import spark.template.freemarker.FreeMarkerEngine;
+import spark.template.freemarker.GSONTemplateEngine;
 
 import static com.chemasmas.ahorcado.AhorcadoDB.*;
 import static spark.Spark.*;
@@ -21,14 +22,17 @@ import static spark.Spark.*;
  * @author Chemasmas
  */
 public class Ahorcado {
-    
+
+
     
     public static void main(String[] args) {
         staticFileLocation("/");
+        port(1234);
         //externalStaticFileLocation("/resources");
         Configuration config=new Configuration();
         config.setClassForTemplateLoading(FreeMarkerEngine.class, "/");
         FreeMarkerEngine engine=new FreeMarkerEngine();
+        GSONTemplateEngine json=new GSONTemplateEngine();
         engine.setConfiguration(config);  
         
         //get("/hello",(req,res)->"Hola Spark");
@@ -61,6 +65,7 @@ public class Ahorcado {
         get("/dificultad",(req,res)->{
             HashMap<String,Object> modelo=new HashMap<>();
             modelo.put("Titulo","Ahorcado");
+            req.session().invalidate();
             return new ModelAndView(modelo,"dificultad.ftl");
         },engine);
 
@@ -93,24 +98,36 @@ public class Ahorcado {
                 req.session().attribute("problemas",p);
             }
             return new ModelAndView(modelo,"problemas.ftl");
-        });
+        },engine);
 
         //Solo habra 6 problemas
         //Problema
+        //Retorna JSON
         get("/problema/:problema",(req,res)->{
             if(req.queryParams("problema")!=null)
             {
                 return null;
             }
-            //Debe retornar la vista
-            return req.params(":problema");
-        });
+            int indice=req.session().attribute("problema");
+            Problemas prob= req.session().attribute("problemas");
+            return prob.getProblemas().get(indice);
+        },json);
 
         //Revision de Problema
         post("/problema/:problema/validar", (req, res) -> {
+            if(req.queryParams("problema")!=null)
+            {
+                return null;
+            }
+            int indice=req.session().attribute("problema");
+            Problemas prob= req.session().attribute("problemas");
+            String respuesta=req.queryParams("respuesta");
             //recibire el resultado , procesare, asiganre puntaje retornare estado o redireccion
+
+            String wolf[]=AhorcadoWolfram.getDerivada("x**3");
+            //Debo de enviarla a wolfram y compararla
             return req.params(":problema");
-        });
+        },json);
 
         get("/final",(req,res)->{
             //System.out.println((String)req.attribute("nivel"));
