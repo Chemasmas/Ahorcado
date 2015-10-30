@@ -1,28 +1,92 @@
 [
-{problema:"integrate c dx",nivel:"facil",tipo:"directo",latex:"\int c dx",solucion:"\int c dx = 1+C"},
-{problema:"integrate x dx",nivel:"facil",tipo:"directo",latex:"\int x dx",solucion:"\int x dx = \frac{x^{2}}{2}+C" },
-{problema:"integrate x**2 dx",nivel:"facil",tipo:"directo",latex:"\int x^{2} dx",solucion:"\int x^{2} dx=\frac{x^{3}}{3}+C"},
-{problema:"integrate (x+3)**10 dx",nivel:"facil",tipo:"cambio"},
-{problema:"integrate (2x+3)**3 dx",nivel:"facil",tipo:"cambio"},
-{problema:"integrate (30x -8) **30 dx",nivel:"facil",tipo:"cambio"},
+{problema:"integrate c dx",nivel:"facil",tipo:"directo",latex:"\\int c dx",solucion:"\\int c dx = 1+C"},
+{problema:"integrate x dx",nivel:"facil",tipo:"directo",latex:"\\int x dx",solucion:"\\int x dx = \\frac{x^{2}}{2}+C" },
+{problema:"integrate x**2 dx",nivel:"facil",tipo:"directo",latex:"\\int x^{2} dx",solucion:"\\int x^{2} dx=\\frac{x^{3}}{3}+C"},
+{problema:"integrate (x+3)**10 dx",nivel:"facil",tipo:"cambio"},latex:"\\int (x +3)^{10} dx"solucion:"<tr>
+        
+        <td> u = x +3  </td>
+        <td>du = dx  </td>
+        <td> = \\int u ^{10} du =\\frac {u^{11}}{11} = \\frac {(x + 3)^{11}}{11}+C  </td>
+        
+    </tr>"},
+{problema:"integrate (2x+7)**3 dx",nivel:"facil",tipo:"cambio"},latex:"\\int (2x +7)^{3} dx",solucion:" <tr>
+        
+        <td> u = 2x + 7  </td>
+        <td>du = 2 dx <br> \\dfrac{1}{2}du = dx  </td>
+        <td>= \\frac{1}{2} \\int u ^{3} du = \\frac{1}{2} \\frac{u^4}{4} = \\frac{1}{8} (2x + 7)^{4}+ C </td>
+        
+    </tr>"},
+{problema:"integrate (30x -8) **30 dx",nivel:"facil",tipo:"cambio"},latex:"\\int (30x - 8)^{30} dx",solucion:"<tr>
+        
+        <td>u = 30x - 8 </td>
+        <td>du = 30 dx  <br>
+	 \\dfrac{du}{30} = dx  </td>
+        <td> =  \\frac{1}{30} \\int u ^{30} du = \\frac{1}{30} \\frac{u^31}{31}= \\frac{1}{930} (30x - 8)^{31}+ C</td>
+        
+    </tr>"},
 {problema:"integrate sen**2 x dx",nivel:"facil",tipo:"partes"},
 {problema:"integrate ln x dx",nivel:"facil",tipo:"partes"},
 {problema:"integrate x cos (5x) dx",nivel:"facil",tipo:"partes"},
-{problema:"integrate 2x**3+6 dx",nivel:"medio",tipo:"directo"},
-{problema:"integrate x(x**2-x**3) dx",nivel:"medio",tipo:"directo"},
-{problema:"integrate ((x**-3)+(x**(1/2))+8) dx",nivel:"medio",tipo:"directo"},
-{problema:"integrate x (2 + (x**2)) dx",nivel:"medio",tipo:"cambio"},
-{problema:"integrate x**4 ( 10**5 - 20) dx",nivel:"medio",tipo:"cambio"},
-{problema:"integrate x **2 sqrt(x**3 + 1) dx",nivel:"medio",tipo:"cambio"},
+{problema:"integrate 2x**3+6 dx",nivel:"medio",tipo:"directo"},latex:"\\int {2x^{3}}+6 dx",solucion:"= \\int {2x^{3}} dx +\\int 6dx=\\frac{x^{4}}{4}+6x+C "},
+{problema:"integrate x(x**2-x**3) dx",nivel:"medio",tipo:"directo"},latex:"\\int x({x^{2}}-{x^{3}}) dx",solucion:"=\\int x^{3}-x^{4}dx=\\frac{x^{4}}{4}-\\frac{x^{5}}{5}+C "},
+{problema:"integrate ((x**-3)+(x**(1/2))+8) dx",nivel:"medio",tipo:"directo"},latex:"\\int(x^{-3}+x^{1/2}+8)dx",solucion:"=\\int x^{-3}dx+\\int x^{1/2}dx+\\int 8dx= \\frac{x^{-2}}{-2}+\\frac {x^{3/2}}{3/2}+8x+C"},
+{problema:"integrate x (2 + (x**2)) dx",nivel:"medio",tipo:"cambio"},latex:"\\int (2 + x^{2}) dx",solucion:"<tr>
+        
+        <td> u = 2 + x^{2}  </td>
+        <td> du = 2x dx 	<br> 
+	 \\frac{du}{2}=dx   </td>
+        <td> = \\frac{1}{2}\\int u du=\\frac{1}{2} \\frac{u^2}{2} = \\frac{1}{4}(2 + x^{2})+ C  </td>
+        
+    </tr>"},
+{problema:"integrate x**4 ( 10**5 - 20) dx",nivel:"medio",tipo:"cambio"},latex:"\\int x^{4}(10^{5}- 20) dx",solucion:"<tr>
+        
+        <td> u = 10x^{5}-20    </td>
+        <td>du = 40x^{4}-2dx  	<br>
+	 \\frac{1}{40}du=x^{4}dx</td>
+        <td> = \\frac{1}{40} \\int u du = \\frac{1}{40} \\frac{u^2}{2}= \\frac{1}{80}(10x^{5}-20)^2+C </td>
+        
+    </tr>"},
+{problema:"integrate x **2 sqrt(x**3 + 1) dx",nivel:"medio",tipo:"cambio"},latex:"\\int x^{2} \\sqrt{x^{3} +1}dx",solucion:"<tr>
+        
+        <td> u = x^{3}+1</td>
+        <td>du = 3x^{2}dx  	<br>
+	 \\frac{du}{3}=x^{2}dx</td>
+        <td> \\frac{1}{3}\\int \\sqrt{u}du= \\frac{1}{3} \\int u^{1/2}du= \\dfrac{1}{3} \\dfrac{u^{3/2}}{(3/2)} =\\frac{2}{9} \\sqrt{u^{3}}= \\frac{2}{9}\\sqrt{(x^{3}+1)^3}+C   </td>
+        
+    </tr>"},
 {problema:"integrate t sec **2  (2t) dt",nivel:"medio",tipo:"partes"},
 {problema:"integrate ln**2 x dx",nivel:"medio",tipo:"partes"},
 {problema:"integrate (x(e**(2x)))/(1+2x)**2) dx",nivel:"medio",tipo:"partes"},
-{problema:"integrate ((2x**3)+(3x**(-3))-(4**(1/2))) dx",nivel:"dificil",tipo:"directo"},
-{problema:"integrate ((x**8)+(6x**7)-(5x**6)+(4x**5)) dx",nivel:"dificil",tipo:"directo"},
-{problema:"integrate ((x**5)+(x**6))**2 dx",nivel:"dificil",tipo:"directo"},
-{problema:"integrate x/(1-8x)**4 dx",nivel:"dificil",tipo:"cambio"},
-{problema:"integrate (cos **3 theta) (sen theta) dx",nivel:"dificil",tipo:"cambio"},
-{problema:"integrate x sen (x**2) dx",nivel:"dificil",tipo:"cambio"},
+{problema:"integrate ((2x**3)+(3x**(-3))-(4**(1/2))) dx",nivel:"dificil",tipo:"directo"},latex:"\\int 2x^{3}+3x^{-3}-4x^{1/2}dx",solucion:"=\\int 2x^{3}dx+\\int 3x^{-3}dx-\\int 4x^{1/2}dx=\\frac {2x^{4}}{4}-\\frac{3x^{-2}}{2}-\\frac{4x^{3/2}}{3/2}+C"},
+{problema:"integrate ((x**8)+(6x**7)-(5x**6)+(4x**5)) dx",nivel:"dificil",tipo:"directo"},latex:"\\int x^{8}+6x^{7}-5x^{6}+4x^{5}dx",solucion:"=\\int x^{8}dx+\\int 6x^{7}dx-\\int 5x^{6}dx+\\int4x^{5}dx=\\frac{x^{9}}{9}+\\frac{6x^{8}}{8} -\\frac{5x^{7}}{7}+\\frac{4x^{6}}{6}+C"},
+{problema:"integrate ((x**5)+(x**6))**2 dx",nivel:"dificil",tipo:"directo"},latex:"\\int (x^{5}+x^{6})^{2}dx",solucion:"=\\int x^{10}+2x^{5}x^{6}+x^{12}=\\int x^{10}+\\int 2x^{11}+\\int x^{12}=\\frac {x^{11}}{11}+\\frac {x^{12}}{12}+\\frac {x^{13}}{13}+C "},
+{problema:"integrate x/(1-8x)**4 dx",nivel:"dificil",tipo:"cambio"},latex:"\\int \\frac{dx}{(1-8x)^4} dx",solucion:"<tr>
+        
+        <td> u = 1-8u   </td>
+        <td>du = -8 dx 	<br> 
+	 \\frac{-du}{8}=dx</td>
+        <td> -\\dfrac{1}{8} \\int \\frac{du}{u^{4}}= -\\dfrac{1}{8} \\int u^{-4} du= -\\dfrac{1}{8} \\frac{u^-3}{3}= \\dfrac{1}{24} u^{-3}= \\dfrac{1}{24u^3}= \\dfrac{1}{24(1-8u)}+C </td>
+        
+    </tr>"},
+{problema:"integrate (cos **3 theta) (sen theta) dx",nivel:"dificil",tipo:"cambio"},latex:"\\int cos^{3} \\theta sen \\theta d\\theta dx",solucion:"<tr>
+        
+        <td> u = cos\\theta  </td>
+        <td>  du = -sen\\theta d\\theta  	<br>
+            -du= sen\\thetad\\theta	</td>
+	 
+        <td> - \\int u^{3}du= -\\frac{u^4}{4}= -\\dfrac{(cos\\theta )^4}{4}+C   </td>
+        
+    </tr>"},
+{problema:"integrate x sen (x**2) dx",nivel:"dificil",tipo:"cambio"},latex:"\\int x sen(x^{2})dx",solucion:"\\int x sen(x^{2})dx",solucion:"
+              <tr>
+        
+        <td>  u = x^{2} </td>
+        <td> du = 2x dx <br>	 
+	 \\frac{du}{2}= x dx 	</td>
+	 
+        <td>\\frac{1}{2} \\int sen (u)du= -\\frac{1}{2}cos u = -\\frac{1}{2} cos (x^{2})+C   </td>
+
+        </tr>  "},
 {problema:"integrate arc tan (4x) dx",nivel:"dificil",tipo:"partes"},
 {problema:"integrate ln x/x**(1/2) dx",nivel:"dificil",tipo:"partes"},
 {problema:"integrate secx dx",nivel:"dificil",tipo:"partes"}

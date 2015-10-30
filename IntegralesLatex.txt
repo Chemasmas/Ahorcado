@@ -14,18 +14,18 @@
 
 
 	
-	    \int (x +3)^{10} dx = \int u ^{10} du =\frac {u^{11}}{11}+C = \frac {(x + 3)^{11}}{11}+C   
+	*    \int (x +3)^{10} dx = \int u ^{10} du =\frac {u^{11}}{11} = \frac {(x + 3)^{11}}{11}+C   
 	 u = x +3  
-	 du = dx  
+	 	 
 	   
 	   
-	\int (2x +3)^{3} dx = \frac{1}{2} \int u ^{3} du = \frac{1}{2} \frac{u^4}{4} + C = \frac{1}{8} (2x + 7)^{4}+ C  
+	*\int (2x +7)^{3} dx = \frac{1}{2} \int u ^{3} du = \frac{1}{2} \frac{u^4}{4} = \frac{1}{8} (2x + 7)^{4}+ C  
 	 u = 2x + 7  
 	 du = 2 dx  
 	 \dfrac{1}{2}du = dx  
 	
 	
-	\int (30x - 8)^{30} dx =  \frac{1}{30} \int u ^{30} du = \frac{1}{30} \frac{u^31}{31} + C = \frac{1}{930} (30x - 8)^{31}+ C  
+	*\int (30x - 8)^{30} dx =  \frac{1}{30} \int u ^{30} du = \frac{1}{30} \frac{u^31}{31}= \frac{1}{930} (30x - 8)^{31}+ C  
 	 u = 30x - 8  
 	 du = 30 dx  
 	 \dfrac{du}{30} = dx  
@@ -33,34 +33,34 @@
 	
 	
 	
-	 \int (2 + x^{2}) dx = \frac{1}{2}\int u du=\frac{1}{2} \frac{u^2}{2}+C = \frac{1}{4}(2 + x^{2})+ C  
+	 \int (2 + x^{2}) dx = \frac{1}{2}\int u du=\frac{1}{2} \frac{u^2}{2} = \frac{1}{4}(2 + x^{2})+ C  
 	 u = 2 + x^{2}  
 	 du = 2x dx 	 
 	 \frac{du}{2}=dx  
 	
-	 \int x^{4}(10^{5}- 20) dx= \frac{1}{40} \int u du = \frac{1}{40} \frac{u^2}{2}+C = \frac{1}{80}(10x^{5}-20)^2+C  
+	 \int x^{4}(10^{5}- 20) dx= \frac{1}{40} \int u du = \frac{1}{40} \frac{u^2}{2}= \frac{1}{80}(10x^{5}-20)^2+C  
 	 u = 10x^{5}-20  
 	 du = 40x^{4}-2dx  	
 	 \frac{1}{40}du=x^{4}dx  
 	 
-	 \int x^{2} \sqrt{x^{3} +1}dx= \frac{1}{3}\int \sqrt{u}du= \frac{1}{3} \int u^{1/2}du= \dfrac{1}{3} \dfrac{u^{3/2}}{(3/2)}+C =\frac{2}{9} \sqrt{u^{3}}+C = \frac{2}{9}\sqrt{(x^{3}+1)^3}+C   
+	 \int x^{2} \sqrt{x^{3} +1}dx= \frac{1}{3}\int \sqrt{u}du= \frac{1}{3} \int u^{1/2}du= \dfrac{1}{3} \dfrac{u^{3/2}}{(3/2)} =\frac{2}{9} \sqrt{u^{3}}= \frac{2}{9}\sqrt{(x^{3}+1)^3}+C   
 	 u = x^{3}+1  
 	 du = 3x^{2}dx  	
 	 \frac{du}{3}=x^{2}dx  
 	
  
 	
-	  \int \frac{dx}{(1-8x)^4} dx= -\dfrac{1}{8} \int \frac{du}{u^{4}}= -\dfrac{1}{8} \int u^{-4} du= -\dfrac{1}{8} \frac{u^-3}{3}+C = \dfrac{1}{24} u^{-3}+C= \dfrac{1}{24u^3}+C= \dfrac{1}{24(1-8u)}+C    
+	  \int \frac{dx}{(1-8x)^4} dx= -\dfrac{1}{8} \int \frac{du}{u^{4}}= -\dfrac{1}{8} \int u^{-4} du= -\dfrac{1}{8} \frac{u^-3}{3}= \dfrac{1}{24} u^{-3}= \dfrac{1}{24u^3}= \dfrac{1}{24(1-8u)}+C    
 	 u = 1-8u  
 	 du = -8 dx 	 
 	 \frac{-du}{8}=dx  
 	
-	 \int cos^{3} \theta sen \theta d\theta dx= - \int u^{3}du= -\frac{u^4}{4}+C= -\dfrac{(cos\theta )^4}{4}+C  
+	 \int cos^{3} \theta sen \theta d\theta dx= - \int u^{3}du= -\frac{u^4}{4}= -\dfrac{(cos\theta )^4}{4}+C  
 	 u = cos\theta  
 	 du = -sen\theta d\theta  	
 	 -du= sen\thetad\theta  
 	
-	 \int x sen(x^{2})dx = \frac{1}{2} \int sen (u)du= -\frac{1}{2}cos u +C = -\frac{1}{2} cos (x^{2})+C  
+	 \int x sen(x^{2})dx = \frac{1}{2} \int sen (u)du= -\frac{1}{2}cos u = -\frac{1}{2} cos (x^{2})+C  
 	 u = x^{2}  
 	 du = 2x dx 	 
 	 \frac{du}{2}= x dx  
