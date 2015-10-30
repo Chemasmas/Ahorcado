@@ -1,7 +1,7 @@
 [
-{problema:"integrate 9 dx",nivel:"facil",tipo:"directo"},
-{problema:"integrate x dx",nivel:"facil",tipo:"directo"},
-{problema:"integrate x**2 dx",nivel:"facil",tipo:"directo"},
+{problema:"integrate c dx",nivel:"facil",tipo:"directo",latex:"\int c dx",solucion:"\int c dx = 1+C"},
+{problema:"integrate x dx",nivel:"facil",tipo:"directo",latex:"\int x dx",solucion:"\int x dx = \frac{x^{2}}{2}+C" },
+{problema:"integrate x**2 dx",nivel:"facil",tipo:"directo",latex:"\int x^{2} dx",solucion:"\int x^{2} dx=\frac{x^{3}}{3}+C"},
 {problema:"integrate (x+3)**10 dx",nivel:"facil",tipo:"cambio"},
 {problema:"integrate (2x+3)**3 dx",nivel:"facil",tipo:"cambio"},
 {problema:"integrate (30x -8) **30 dx",nivel:"facil",tipo:"cambio"},

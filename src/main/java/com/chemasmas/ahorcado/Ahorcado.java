@@ -124,16 +124,30 @@ public class Ahorcado {
             String respuesta=req.queryParams("respuesta");
             //recibire el resultado , procesare, asiganre puntaje retornare estado o redireccion
 
+
             String wolf[]=AhorcadoWolfram.getDerivada("x**3");
+
+
             //Debo de enviarla a wolfram y compararla
             return req.params(":problema");
         },json);
 
         get("/final",(req,res)->{
-            //System.out.println((String)req.attribute("nivel"));
-            //System.out.println(req.params("nivel"));
+            HashMap<String,Object> modelo=new HashMap<>();
+            modelo.put("Titulo","Ahorcado");
+            if(req.session().attribute("nivel")==null)
+            {
+                //No hay nivel
+                res.redirect("/");
+            }
+            else
+            {
+                Problemas ps=req.session().attribute("problemas");
+
+                modelo.put("resultados",ps.getProblemas());
+            }
+            return new ModelAndView(modelo,"final.ftl");
             //Termino la sesion, y despliego el resultado
-            return req.params(":sesion");
-        });
+        },engine);
     }
 }

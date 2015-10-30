@@ -22,6 +22,15 @@ public class Problema {
         this.estatus = estatus;
     }
 
+    public String getProcedimiento() {
+        return procedimiento;
+    }
+
+    public void setProcedimiento(String procedimiento) {
+        this.procedimiento = procedimiento;
+    }
+
+    String procedimiento;
     boolean estatus;
     String problema;
 }
