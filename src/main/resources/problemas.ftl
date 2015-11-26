@@ -4,10 +4,7 @@
                 <div class="col-sm-7 col-md-7 alto">
                     <div class="row Pregunta">
                         <div class="col-sm-12 col-md-12" >
-                            <div class="integral hide" id="integral">
-
-                                \(\int_a^b \! f(x) \, \mathrm{d}x.\)
-
+                            <div class="integral" id="integral">
                             </div>
                         </div>
                     </div>
@@ -24,7 +21,7 @@
                                         <a class="btn2 btn-blue">Salir</a>
                                     </div>
                                     <div class="col-sm-offset-4 col-sm-3">
-                                        <a class="btn2 btn-green">Siguiente</a>
+                                        <a class="btn2 btn-green" id="siguiente" >Siguiente</a>
                                     </div>
 
                                 </div>
@@ -42,12 +39,22 @@
         <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
         <script type="text/javascript">
+            var numProb=1;
             $(function() {
-                //$(".Pregunta").show();
-                setTimeout(function() {
-                    console.log("Hola");
-                    $(".integral").removeClass("hide");
-                }, 2000);
+                $.ajax({url:"problema/"+numProb,context: document.body}).done(function(res){
+                    var temp=eval("("+res+")");
+                    console.log(temp.latex);
+                    $("#integral").html("\\( "+temp.latex+" \\)");
+                });
+            });
+            $("#siguiente").click(function(){
+                numProb++;
+
+                $.ajax({url:"problema/"+numProb,context: document.body}).done(function(res){
+                    var temp=eval("("+res+")");
+                    console.log(temp.latex);
+                    $("#integral").html("\\( "+temp.latex+" \\)");
+                });
             });
         </script>
 <#include "/Pie.ftl">

@@ -2,9 +2,12 @@ package com.chemasmas.ahorcado.entidades;
 
 public class Problema {
 
-    public Problema() {
-        estatus=false;
-    }
+    String problema;
+    boolean estatus;
+    String nivel;
+    String tipo;
+    String latex;
+    String sol;
 
     public String getProblema() {
         return problema;
@@ -22,15 +25,47 @@ public class Problema {
         this.estatus = estatus;
     }
 
-    public String getProcedimiento() {
-        return procedimiento;
+    public String getNivel() {
+        return nivel;
     }
 
-    public void setProcedimiento(String procedimiento) {
-        this.procedimiento = procedimiento;
+    public void setNivel(String nivel) {
+        this.nivel = nivel;
     }
 
-    String procedimiento;
-    boolean estatus;
-    String problema;
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public String getLatex() {
+        return latex;
+    }
+
+    public void setLatex(String latex) {
+        this.latex = latex;
+    }
+
+    public String getSol() {
+        return sol;
+    }
+
+    public void setSol(String sol) {
+        this.sol = sol;
+    }
+
+    @Override
+    public String toString() {
+        return "Problema{" +
+                "problema='" + problema + '\'' +
+                ", estatus=" + estatus +
+                ", nivel='" + nivel + '\'' +
+                ", tipo='" + tipo + '\'' +
+                ", latex='" + latex + '\'' +
+                ", sol='" + sol + '\'' +
+                '}';
+    }
 }

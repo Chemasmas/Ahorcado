@@ -19,12 +19,18 @@
                     </tr>
                 </thead>
                 <tbody>
-                <#list problemas as problema>
+                <#list resultados as resultado>
                     <tr>
-                        <td>${score.pos}</td>
-                        <td>${score.nombre}</td>
-                        <td>${score.puntaje}</td>
-                        <td>${score.dificultad}</td>
+                        <td>${resultado.tipo}</td>
+                        <td>${resultado.latex}</td>
+                        <td>
+                            <#if (resultado.sol)??>
+                                <table>
+                                ${resultado.sol}
+                                </table>
+                            </#if>
+                        </td>
+                        <td>${resultado.nivel}</td>
                         </tr>
                 </#list>
                     </tbody>

@@ -50,12 +50,19 @@ public class AhorcadoDB {
             public void apply(Document document) {
                 Problema curr=new Problema();
                 curr.setProblema(document.getString("problema"));
+                curr.setLatex(document.getString("latex"));
+                curr.setNivel(document.getString("nivel"));
+                curr.setSol(document.getString("solucion"));
+                curr.setTipo(document.getString("tipo"));
+
+                System.out.println(curr.getProblema());
                 directosAL.add(curr);
             }
         });
         Collections.shuffle(directosAL,rnd);
         //problemasAL.addAll(directosAL.subList(1, 3));
-        res.getProblemas().addAll(directosAL.subList(1, 3));
+        res.getProblemas().addAll(directosAL.subList(0, 3));
+
 
         FindIterable<Document> cambio=db.getCollection("problemas").find(new Document("nivel",nivel).append("tipo","cambio"));
         ArrayList<Problema> cambioAL=new ArrayList<>();
@@ -64,12 +71,18 @@ public class AhorcadoDB {
             public void apply(Document document) {
                 Problema curr=new Problema();
                 curr.setProblema(document.getString("problema"));
+                curr.setLatex(document.getString("latex"));
+                curr.setNivel(document.getString("nivel"));
+                curr.setSol(document.getString("solucion"));
+                curr.setTipo(document.getString("tipo"));
+
+                System.out.println(curr.getProblema());
                 cambioAL.add(curr);
             }
         });
         Collections.shuffle(cambioAL,rnd);
         //problemasAL.addAll(cambioAL.subList(1,3));
-        res.getProblemas().addAll(cambioAL.subList(1, 3));
+        res.getProblemas().addAll(cambioAL.subList(0, 3));
 
         FindIterable<Document> partes=db.getCollection("problemas").find(new Document("nivel",nivel).append("tipo","partes"));
         ArrayList<Problema> partesAL=new ArrayList<>();
@@ -78,13 +91,18 @@ public class AhorcadoDB {
             public void apply(Document document) {
                 Problema curr=new Problema();
                 curr.setProblema(document.getString("problema"));
+                curr.setLatex(document.getString("latex"));
+                curr.setNivel(document.getString("nivel"));
+                curr.setSol(document.getString("solucion"));
+                curr.setTipo(document.getString("tipo"));
+
+                System.out.println(curr.getProblema());
                 partesAL.add(curr);
             }
         });
         Collections.shuffle(partesAL,rnd);
         //problemasAL.addAll(partesAL.subList(1,3));
-        res.getProblemas().addAll(partesAL.subList(1, 3));
-
+        res.getProblemas().addAll(partesAL.subList(0, 3));
         return res;
     }
 

@@ -40,11 +40,11 @@ public class Ahorcado {
         //get("/say/*/to/*", (request, response) -> {
         //    return request.splat()[0]+" "+request.splat()[1];
         //});
-        //get("/freemarker",(req,response)->{
-        //    HashMap<String,Object> modelo=new HashMap<>();
-        //    modelo.put("name","Ok");
-        //    return new ModelAndView(modelo,"hola.ftl");
-        //},engine);
+        /*get("/freemarker",(req,response)->{
+            HashMap<String,Object> modelo=new HashMap<>();
+            modelo.put("name","Ok");
+            return new ModelAndView(modelo,"hola.ftl");
+        },engine);*/
 
         //Bienvenida
         get("/",(req,res)->{
@@ -75,11 +75,12 @@ public class Ahorcado {
             if (req.queryParams("nivel") != null) {
                 req.session(true);
                 req.session().attribute("nivel", req.queryParams("nivel"));/**/
-                req.session().attribute("intentos",4); //Revisar contra el js
+                req.session().attribute("intentos", 4); //Revisar contra el js
                 res.redirect("/problemas");
-            } else {
-                res.redirect("/");
             }
+            //} else {
+              //  res.redirect("/");
+            //}
             return "";
         });
 
@@ -87,16 +88,16 @@ public class Ahorcado {
             Problemas p=null;
             HashMap<String,Object> modelo=new HashMap<>();
             modelo.put("Titulo","Ahorcado");
-            if(req.session().attribute("nivel")==null)
-            {
+            //if(req.session().attribute("nivel")==null)
+            //{
                 //No hay nivel
-                res.redirect("/");
-            }
-            else
-            {
-                p= getProblemas(req.session().attribute("nivel"));
+            //    res.redirect("/");
+            //}
+            //else
+           // {
+                p=getProblemas(req.session().attribute("nivel"));
                 req.session().attribute("problemas",p);
-            }
+            //}
             return new ModelAndView(modelo,"problemas.ftl");
         },engine);
 
@@ -104,13 +105,17 @@ public class Ahorcado {
         //Problema
         //Retorna JSON
         get("/problema/:problema",(req,res)->{
-            if(req.queryParams("problema")!=null)
+            int indice=Integer.parseInt(req.params(":problema"));
+            if(indice<9){
+                Problemas prob= req.session().attribute("problemas");
+                System.out.println(prob.getProblemas().get(indice));
+                return prob.getProblemas().get(indice);
+            }
+            else
             {
+                res.redirect("/final");
                 return null;
             }
-            int indice=req.session().attribute("problema");
-            Problemas prob= req.session().attribute("problemas");
-            return prob.getProblemas().get(indice);
         },json);
 
         //Revision de Problema
@@ -134,18 +139,18 @@ public class Ahorcado {
 
         get("/final",(req,res)->{
             HashMap<String,Object> modelo=new HashMap<>();
-            modelo.put("Titulo","Ahorcado");
-            if(req.session().attribute("nivel")==null)
-            {
+            modelo.put("Titulo", "Ahorcado");
+          //  if(req.session().attribute("nivel")==null)
+           // {
                 //No hay nivel
-                res.redirect("/");
-            }
-            else
-            {
+             //   res.redirect("/");
+           // }
+            //else
+            //{
                 Problemas ps=req.session().attribute("problemas");
 
                 modelo.put("resultados",ps.getProblemas());
-            }
+            //}
             return new ModelAndView(modelo,"final.ftl");
             //Termino la sesion, y despliego el resultado
         },engine);
