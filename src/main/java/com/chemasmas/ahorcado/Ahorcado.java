@@ -86,8 +86,6 @@ public class Ahorcado {
 
         get("/problemas",(req,res)->{
             Problemas p=null;
-            HashMap<String,Object> modelo=new HashMap<>();
-            modelo.put("Titulo","Ahorcado");
             //if(req.session().attribute("nivel")==null)
             //{
                 //No hay nivel
@@ -97,45 +95,55 @@ public class Ahorcado {
            // {
                 p=getProblemas(req.session().attribute("nivel"));
                 req.session().attribute("problemas",p);
+                req.session().attribute("intentos",3);
+                res.redirect("/problema/1");
             //}
-            return new ModelAndView(modelo,"problemas.ftl");
-        },engine);
+            //return new ModelAndView(modelo,"problemas.ftl");
+            return "";
+        });
 
-        //Solo habra 6 problemas
         //Problema
         //Retorna JSON
         get("/problema/:problema",(req,res)->{
             int indice=Integer.parseInt(req.params(":problema"));
+            HashMap<String,Object> modelo=new HashMap<>();
+            modelo.put("Titulo","Ahorcado");
             if(indice<9){
                 Problemas prob= req.session().attribute("problemas");
                 System.out.println(prob.getProblemas().get(indice));
-                return prob.getProblemas().get(indice);
+                modelo.put("Problema",prob.getProblemas().get(indice).getLatex());
+                modelo.put("idproblema",indice);
+                //return prob.getProblemas().get(indice);
+                return new ModelAndView(modelo,"problemas.ftl");
+                //return new ModelAndView(modelo,"dificultad.ftl");
             }
             else
             {
                 res.redirect("/final");
-                return null;
+                return new ModelAndView(modelo,"final.ftl");
             }
-        },json);
+        },engine);
 
         //Revision de Problema
         post("/problema/:problema/validar", (req, res) -> {
-            if(req.queryParams("problema")!=null)
-            {
-                return null;
-            }
-            int indice=req.session().attribute("problema");
-            Problemas prob= req.session().attribute("problemas");
-            String respuesta=req.queryParams("respuesta");
+            int indice=Integer.parseInt(req.params(":problema"));
+           
+            //if(req.queryParams("problema")!=null)
+            //{
+                //return null;
+            //}
+//            Problemas prob= req.session().attribute("problemas");
+//            String respuesta=req.queryParams("respuesta");
             //recibire el resultado , procesare, asiganre puntaje retornare estado o redireccion
 
 
             String wolf[]=AhorcadoWolfram.getDerivada("x**3");
-
-
+            
+            res.redirect("/problema/"+(indice+1));
             //Debo de enviarla a wolfram y compararla
-            return req.params(":problema");
-        },json);
+            //return new ModelAndView(modelo,"problemas.ftl");
+            return "";
+        });
 
         get("/final",(req,res)->{
             HashMap<String,Object> modelo=new HashMap<>();

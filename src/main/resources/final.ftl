@@ -16,17 +16,18 @@
                         <th>Problema</th>
                         <th>Resultado</th>
                         <th>Procedimiento</th>
+                        <th>Nivel</th>
                     </tr>
                 </thead>
                 <tbody>
                 <#list resultados as resultado>
                     <tr>
                         <td>${resultado.tipo}</td>
-                        <td>${resultado.latex}</td>
+                        <td> \( ${resultado.latex} \)</td>
                         <td>
                             <#if (resultado.sol)??>
                                 <table>
-                                ${resultado.sol}
+                                \( ${resultado.sol} \)
                                 </table>
                             </#if>
                         </td>
